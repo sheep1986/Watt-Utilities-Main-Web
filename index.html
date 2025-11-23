@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Watt Utilities | Cheapest Business Energy Broker | Compare British Gas, Eon & Opus</title>
+    <meta name="description" content="Find the cheapest business energy supplier with Watt Utilities. We are a leading energy broker comparing rates from British Gas, Eon, Opus Energy, and 20+ others to save you money." />
+    <meta name="keywords" content="Cheapest Energy Supplier, Business Energy, Energy Broker, British Gas, Eon, Opus Energy, Cheapest Business Energy Supplier" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data for SEO (Organization & Ratings) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Watt Utilities",
+      "url": "https://watt.co.uk",
+      "logo": "https://i.ibb.co/8n10tw7L/watt-utilities-white-logo-1-500-x-200-px-500-x-100-px-6.png",
+      "description": "Leading UK Energy Broker helping businesses find the cheapest business energy supplier. Compare British Gas, Eon, Opus Energy and more.",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "1240",
+        "bestRating": "5"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+44-161-123-4567",
+        "contactType": "sales",
+        "areaServed": "GB",
+        "availableLanguage": "en"
+      },
+      "sameAs": [
+        "https://www.facebook.com/WattUtilities/",
+        "https://twitter.com/wattutilities",
+        "https://www.linkedin.com/company/watt-utilities-ltd",
+        "https://www.instagram.com/wattutilities/"
+      ]
+    }
+    </script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              watt: {
+                dark: '#0B1221', // Deepest Navy (Footer/Hero)
+                blue: '#111827', // Corporate Dark
+                primary: '#2563eb', // Action Blue
+                accent: '#8cc63f', // Updated Brand Green to match Logo
+                accentHover: '#7ab32e',
+                light: '#f8fafc',
+                surface: '#ffffff',
+              }
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+              'page-enter': 'pageEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+              'scroll': 'scroll 40s linear infinite',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              pageEnter: {
+                '0%': { 
+                  opacity: '0', 
+                  transform: 'translateY(20px) scale(0.96)',
+                  filter: 'blur(4px)'
+                },
+                '100%': { 
+                  opacity: '1', 
+                  transform: 'translateY(0) scale(1)',
+                  filter: 'blur(0)'
+                },
+              },
+              scroll: {
+                '0%': { transform: 'translateX(0)' },
+                '100%': { transform: 'translateX(-50%)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Premium Scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0B1221;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #334155;
+        border-radius: 5px;
+        border: 2px solid #0B1221;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #8cc63f;
+      }
+      
+      /* Utility Classes for Animations */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
+  }
+}
+</script>
+</head>
+  <body class="antialiased text-gray-900">
+    <div id="root"></div>
+  </body>
+</html>
