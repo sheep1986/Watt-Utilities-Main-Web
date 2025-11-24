@@ -54,7 +54,7 @@ export const FAQ: React.FC<FAQProps> = ({ onNavigate }) => {
       <div className="bg-watt-dark text-white py-24 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
            <div className="absolute -top-[40%] -right-[10%] w-[800px] h-[800px] bg-watt-accent/30 rounded-full blur-[120px]"></div>
-           <div className="absolute -bottom-[40%] -left-[10%] w-[600px] h-[600px] bg-blue-600/30 rounded-full blur-[100px]"></div>
+           <div className="absolute -bottom-[40%] -left-[10%] w-[600px] h-[600px] bg-gray-600/30 rounded-full blur-[100px]"></div>
         </div>
         <div className="container mx-auto px-4 text-center relative z-10">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 mb-6 text-watt-accent backdrop-blur-sm border border-white/10">
@@ -76,10 +76,10 @@ export const FAQ: React.FC<FAQProps> = ({ onNavigate }) => {
                      onClick={() => toggleFAQ(index)}
                      className={`w-full text-left px-8 py-6 flex items-center justify-between transition-colors hover:bg-gray-50 group ${openIndex === index ? 'bg-gray-50' : ''}`}
                   >
-                     <span className={`text-lg font-bold transition-colors ${openIndex === index ? 'text-watt-primary' : 'text-watt-dark group-hover:text-watt-primary'}`}>
+                     <span className={`text-lg font-bold transition-colors ${openIndex === index ? 'text-watt-dark' : 'text-watt-dark group-hover:text-gray-600'}`}>
                         {faq.question}
                      </span>
-                     <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${openIndex === index ? 'bg-watt-primary text-white rotate-180' : 'bg-gray-100 text-gray-500 group-hover:bg-gray-200'}`}>
+                     <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${openIndex === index ? 'bg-watt-dark text-white rotate-180' : 'bg-gray-100 text-gray-500 group-hover:bg-gray-200'}`}>
                         <Icons.ChevronDown size={20} />
                      </div>
                   </button>
@@ -95,9 +95,9 @@ export const FAQ: React.FC<FAQProps> = ({ onNavigate }) => {
          </div>
 
          {/* Still have questions CTA */}
-         <div className="max-w-4xl mx-auto mt-12 bg-blue-50 rounded-2xl p-8 md:p-12 border border-blue-100 flex flex-col md:flex-row items-center justify-between gap-8">
+         <div className="max-w-4xl mx-auto mt-12 bg-gray-50 rounded-2xl p-8 md:p-12 border border-gray-100 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex items-center gap-6">
-               <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center text-watt-primary shadow-sm shrink-0">
+               <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center text-watt-dark shadow-sm shrink-0">
                   <Icons.MessageCircle size={28} />
                </div>
                <div>
@@ -106,7 +106,7 @@ export const FAQ: React.FC<FAQProps> = ({ onNavigate }) => {
                </div>
             </div>
             <div className="flex gap-4">
-               <button onClick={() => onNavigate('contact')} className="bg-watt-primary text-white font-bold py-3 px-8 rounded-xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-200">
+               <button onClick={() => onNavigate('contact')} className="bg-watt-dark text-white font-bold py-3 px-8 rounded-xl hover:bg-black transition-colors shadow-lg">
                   Contact Us
                </button>
                <a href="tel:01234567890" className="bg-white text-watt-dark font-bold py-3 px-8 rounded-xl hover:bg-gray-50 transition-colors border border-gray-200">

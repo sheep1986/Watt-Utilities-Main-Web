@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { ScrollToTop } from './components/ScrollToTop';
 import { Home } from './pages/Home';
 import { Quote } from './pages/Quote';
 import { About } from './pages/About';
@@ -91,6 +92,7 @@ const App: React.FC = () => {
           {renderPage()}
         </div>
       </div>
+      <ScrollToTop />
       <Footer onNavigate={navigate} />
     </div>
   );

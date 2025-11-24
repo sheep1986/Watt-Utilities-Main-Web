@@ -31,13 +31,68 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
     };
   }, [isMenuOpen]);
 
+  // Define service links with distinct colors
   const serviceLinks = [
-    { id: 'services/electricity', label: 'Business Electricity', icon: Icons.Zap },
-    { id: 'services/gas', label: 'Business Gas', icon: Icons.Flame },
-    { id: 'services/water', label: 'Water Services', icon: Icons.Droplets },
-    { id: 'services/telecoms', label: 'Telecoms & VoIP', icon: Icons.Wifi },
-    { id: 'services/green-energy', label: 'Green Energy', icon: Icons.Leaf },
-    { id: 'services/connections', label: 'New Connections', icon: Icons.Plug },
+    { 
+        id: 'services/electricity', 
+        label: 'Business Electricity', 
+        icon: Icons.Zap, 
+        color: 'text-amber-600', 
+        bg: 'bg-amber-50', 
+        border: 'border-amber-100',
+        hoverBg: 'hover:bg-amber-50',
+        iconBg: 'bg-amber-100'
+    },
+    { 
+        id: 'services/gas', 
+        label: 'Business Gas', 
+        icon: Icons.Flame, 
+        color: 'text-orange-600', 
+        bg: 'bg-orange-50', 
+        border: 'border-orange-100',
+        hoverBg: 'hover:bg-orange-50',
+        iconBg: 'bg-orange-100'
+    },
+    { 
+        id: 'services/water', 
+        label: 'Water Services', 
+        icon: Icons.Droplets, 
+        color: 'text-cyan-600', 
+        bg: 'bg-cyan-50', 
+        border: 'border-cyan-100',
+        hoverBg: 'hover:bg-cyan-50',
+        iconBg: 'bg-cyan-100'
+    },
+    { 
+        id: 'services/telecoms', 
+        label: 'Telecoms & VoIP', 
+        icon: Icons.Wifi, 
+        color: 'text-violet-600', 
+        bg: 'bg-violet-50', 
+        border: 'border-violet-100',
+        hoverBg: 'hover:bg-violet-50',
+        iconBg: 'bg-violet-100'
+    },
+    { 
+        id: 'services/green-energy', 
+        label: 'Green Energy', 
+        icon: Icons.Leaf, 
+        color: 'text-emerald-600', 
+        bg: 'bg-emerald-50', 
+        border: 'border-emerald-100',
+        hoverBg: 'hover:bg-emerald-50',
+        iconBg: 'bg-emerald-100'
+    },
+    { 
+        id: 'services/connections', 
+        label: 'New Connections', 
+        icon: Icons.Plug, 
+        color: 'text-rose-600', 
+        bg: 'bg-rose-50', 
+        border: 'border-rose-100',
+        hoverBg: 'hover:bg-rose-50',
+        iconBg: 'bg-rose-100'
+    },
   ];
 
   const handleNav = (id: string) => {
@@ -53,11 +108,11 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
             onClick={() => !hasDropdown && handleNav(id)}
             className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 text-sm font-semibold tracking-wide
                 ${activePage === id || (id === 'services' && activePage.startsWith('services'))
-                    ? 'text-watt-primary bg-blue-50' 
+                    ? 'text-watt-dark bg-gray-50' 
                     : 'text-gray-600 hover:text-watt-dark hover:bg-gray-50'
                 }`}
         >
-            <Icon size={18} className={activePage === id ? 'text-watt-primary' : 'text-gray-400 group-hover:text-watt-accent transition-colors'} />
+            <Icon size={18} className={activePage === id ? 'text-watt-accent' : 'text-gray-400 group-hover:text-watt-accent transition-colors'} />
             {label}
             {hasDropdown && <Icons.ChevronDown size={14} className={`transition-transform duration-200 ${activeDropdown === id ? 'rotate-180' : ''}`} />}
         </button>
@@ -65,7 +120,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
         {/* Desktop Dropdown */}
         {hasDropdown && (
              <div 
-                className={`absolute top-full left-0 w-72 pt-4 transition-all duration-200 transform origin-top-left 
+                className={`absolute top-full left-0 w-80 pt-4 transition-all duration-200 transform origin-top-left 
                 ${activeDropdown === id ? 'opacity-100 scale-100 translate-y-0 visible' : 'opacity-0 scale-95 -translate-y-2 invisible'}`}
                 onMouseLeave={() => setActiveDropdown(null)}
              >
@@ -75,19 +130,19 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
                             <button
                                 key={link.id}
                                 onClick={() => handleNav(link.id)}
-                                className="w-full text-left px-4 py-3 rounded-lg hover:bg-gray-50 flex items-center gap-3 group/item transition-colors"
+                                className={`w-full text-left px-4 py-3 rounded-lg flex items-center gap-4 group/item transition-colors ${link.hoverBg}`}
                             >
-                                <div className="w-9 h-9 rounded-full bg-watt-light flex items-center justify-center text-watt-blue group-hover/item:bg-watt-accent group-hover/item:text-white transition-colors shadow-sm">
-                                    <link.icon size={16} />
+                                <div className={`w-10 h-10 rounded-full flex items-center justify-center ${link.color} ${link.bg} transition-colors shadow-sm`}>
+                                    <link.icon size={18} />
                                 </div>
                                 <div>
-                                    <span className="block text-sm font-bold text-gray-800 group-hover/item:text-watt-primary transition-colors">{link.label}</span>
+                                    <span className={`block text-sm font-bold text-gray-800`}>{link.label}</span>
                                 </div>
                             </button>
                         ))}
                     </div>
                     <div className="bg-gray-50 p-3 text-center border-t border-gray-100">
-                        <button onClick={() => handleNav('services')} className="text-xs font-bold text-watt-primary hover:underline flex items-center justify-center gap-1">
+                        <button onClick={() => handleNav('services')} className="text-xs font-bold text-watt-dark hover:text-watt-accent transition-colors flex items-center justify-center gap-1">
                             View All Services <Icons.ArrowRight size={12} />
                         </button>
                     </div>
@@ -116,12 +171,12 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
                   <span className={`w-1.5 h-1.5 rounded-full bg-current ${marketData.trend === 'down' ? 'animate-pulse' : ''}`}></span> 
                   {marketData.status}
               </span>
-              <span className="text-gray-500">|</span>
+              <span className="text-gray-600">|</span>
               <span className="font-mono text-white flex items-center gap-1">
                  {marketData.price}p/kWh
                  {marketData.trend === 'down' ? <Icons.TrendingDown size={12} className="text-emerald-400" /> : 
                   marketData.trend === 'up' ? <Icons.TrendingUp size={12} className="text-red-400" /> : 
-                  <span className="text-blue-300">-</span>}
+                  <span className="text-gray-300">-</span>}
               </span>
            </div>
 
@@ -220,7 +275,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
             <div className="flex-1 overflow-y-auto p-6 space-y-2">
                 
                 <button onClick={() => handleNav('home')} className="w-full flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors text-left group">
-                    <div className="w-10 h-10 rounded-full bg-blue-50 text-watt-primary flex items-center justify-center group-hover:bg-watt-primary group-hover:text-white transition-colors">
+                    <div className="w-10 h-10 rounded-full bg-gray-100 text-watt-dark flex items-center justify-center group-hover:bg-watt-dark group-hover:text-white transition-colors">
                         <Icons.Home size={20} />
                     </div>
                     <span className="font-bold text-gray-800 text-lg">Home</span>
@@ -233,7 +288,7 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
                         className={`w-full flex items-center justify-between p-3 rounded-xl transition-colors text-left group ${activeDropdown === 'mobile-services' ? 'bg-gray-50' : 'hover:bg-gray-50'}`}
                     >
                         <div className="flex items-center gap-4">
-                            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${activeDropdown === 'mobile-services' ? 'bg-watt-primary text-white' : 'bg-blue-50 text-watt-primary group-hover:bg-watt-primary group-hover:text-white'}`}>
+                            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${activeDropdown === 'mobile-services' ? 'bg-watt-dark text-white' : 'bg-gray-100 text-watt-dark group-hover:bg-watt-dark group-hover:text-white'}`}>
                                 <Icons.Zap size={20} />
                             </div>
                             <span className="font-bold text-gray-800 text-lg">Services</span>
@@ -242,18 +297,20 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
                     </button>
                     
                     <div className={`overflow-hidden transition-all duration-300 ${activeDropdown === 'mobile-services' ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                        <div className="bg-gray-50/80 p-2 space-y-1 mt-1 rounded-b-xl border-l-2 border-watt-primary ml-8">
+                        <div className="bg-white p-2 space-y-2 mt-1 rounded-b-xl border-l-2 border-gray-100 ml-8">
                              {serviceLinks.map((link) => (
                                 <button
                                     key={link.id}
                                     onClick={() => handleNav(link.id)}
-                                    className="w-full text-left py-3 px-4 text-gray-600 font-medium flex items-center gap-3 hover:bg-white rounded-lg transition-colors"
+                                    className={`w-full text-left py-3 px-3 font-medium flex items-center gap-3 rounded-lg transition-colors group/item ${link.hoverBg}`}
                                 >
-                                    <link.icon size={16} className="text-watt-accent" />
-                                    {link.label}
+                                    <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${link.bg} ${link.color}`}>
+                                        <link.icon size={16} />
+                                    </div>
+                                    <span className="text-gray-700 font-bold text-sm">{link.label}</span>
                                 </button>
                             ))}
-                             <button onClick={() => handleNav('services')} className="w-full text-left py-2 px-4 text-watt-primary text-xs font-bold uppercase tracking-widest flex items-center gap-2 mt-2">
+                             <button onClick={() => handleNav('services')} className="w-full text-left py-2 px-4 text-watt-dark text-xs font-bold uppercase tracking-widest flex items-center gap-2 mt-2 hover:text-watt-accent transition-colors">
                                 View Overview <Icons.ArrowRight size={12} />
                              </button>
                         </div>
@@ -261,28 +318,28 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
                 </div>
 
                 <button onClick={() => handleNav('loa')} className="w-full flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors text-left group">
-                    <div className="w-10 h-10 rounded-full bg-blue-50 text-watt-primary flex items-center justify-center group-hover:bg-watt-primary group-hover:text-white transition-colors">
+                    <div className="w-10 h-10 rounded-full bg-gray-100 text-watt-dark flex items-center justify-center group-hover:bg-watt-dark group-hover:text-white transition-colors">
                         <Icons.FileSignature size={20} />
                     </div>
                     <span className="font-bold text-gray-800 text-lg">Letter of Authority</span>
                 </button>
 
                 <button onClick={() => handleNav('about')} className="w-full flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors text-left group">
-                    <div className="w-10 h-10 rounded-full bg-blue-50 text-watt-primary flex items-center justify-center group-hover:bg-watt-primary group-hover:text-white transition-colors">
+                    <div className="w-10 h-10 rounded-full bg-gray-100 text-watt-dark flex items-center justify-center group-hover:bg-watt-dark group-hover:text-white transition-colors">
                         <Icons.Users size={20} />
                     </div>
                     <span className="font-bold text-gray-800 text-lg">About Us</span>
                 </button>
 
                 <button onClick={() => handleNav('faq')} className="w-full flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors text-left group">
-                    <div className="w-10 h-10 rounded-full bg-blue-50 text-watt-primary flex items-center justify-center group-hover:bg-watt-primary group-hover:text-white transition-colors">
+                    <div className="w-10 h-10 rounded-full bg-gray-100 text-watt-dark flex items-center justify-center group-hover:bg-watt-dark group-hover:text-white transition-colors">
                         <Icons.MessageCircle size={20} />
                     </div>
                     <span className="font-bold text-gray-800 text-lg">FAQ</span>
                 </button>
 
                 <button onClick={() => handleNav('contact')} className="w-full flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors text-left group">
-                    <div className="w-10 h-10 rounded-full bg-blue-50 text-watt-primary flex items-center justify-center group-hover:bg-watt-primary group-hover:text-white transition-colors">
+                    <div className="w-10 h-10 rounded-full bg-gray-100 text-watt-dark flex items-center justify-center group-hover:bg-watt-dark group-hover:text-white transition-colors">
                         <Icons.Phone size={20} />
                     </div>
                     <span className="font-bold text-gray-800 text-lg">Contact</span>
@@ -301,13 +358,13 @@ export const Header: React.FC<HeaderProps> = ({ onNavigate, activePage }) => {
                 </a>
                 
                 <div className="flex justify-center gap-6 text-gray-400">
-                    <a href="tel:01611234567" className="flex flex-col items-center gap-1 hover:text-watt-primary transition-colors">
+                    <a href="tel:01611234567" className="flex flex-col items-center gap-1 hover:text-watt-dark transition-colors">
                         <div className="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center">
                             <Icons.Phone size={14} />
                         </div>
                         <span className="text-[10px] font-bold uppercase">Call</span>
                     </a>
-                    <a href="mailto:info@wattutilities.co.uk" className="flex flex-col items-center gap-1 hover:text-watt-primary transition-colors">
+                    <a href="mailto:info@wattutilities.co.uk" className="flex flex-col items-center gap-1 hover:text-watt-dark transition-colors">
                         <div className="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center">
                             <Icons.Mail size={14} />
                         </div>

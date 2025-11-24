@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Icons } from '../components/Icons';
 
@@ -17,13 +18,13 @@ export const Quote: React.FC = () => {
             <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Icons.ShieldCheck size={32} />
             </div>
-            <h2 className="text-2xl font-bold text-watt-blue mb-2">Request Received!</h2>
+            <h2 className="text-2xl font-bold text-watt-dark mb-2">Request Received!</h2>
             <p className="text-gray-600 mb-6">
                 One of our energy experts will analyze your requirements and call you within 15 minutes (Mon-Fri 9-5).
             </p>
             <button 
                 onClick={() => setSubmitted(false)} 
-                className="text-watt-primary font-bold underline hover:text-blue-700"
+                className="text-watt-dark font-bold underline hover:text-black"
             >
                 Submit another quote
             </button>
@@ -38,10 +39,10 @@ export const Quote: React.FC = () => {
         <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
             
             {/* Sidebar Info */}
-            <div className="bg-watt-blue text-white p-8 md:w-1/3 flex flex-col justify-between">
+            <div className="bg-watt-dark text-white p-8 md:w-1/3 flex flex-col justify-between">
                 <div>
                     <h2 className="text-2xl font-bold mb-6">Start Saving Today</h2>
-                    <p className="text-blue-200 mb-8 text-sm leading-relaxed">
+                    <p className="text-gray-300 mb-8 text-sm leading-relaxed">
                         Our service is 100% free. We receive a commission from suppliers, so you pay the same or less than going direct.
                     </p>
                     <div className="space-y-4">
@@ -71,28 +72,28 @@ export const Quote: React.FC = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
-                            <input required type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-watt-primary focus:border-transparent outline-none" placeholder="e.g. Watt Utilities Ltd" />
+                            <input required type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-watt-dark focus:border-transparent outline-none" placeholder="e.g. Watt Utilities Ltd" />
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Contact Name</label>
-                            <input required type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-watt-primary focus:border-transparent outline-none" placeholder="e.g. John Smith" />
+                            <input required type="text" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-watt-dark focus:border-transparent outline-none" placeholder="e.g. John Smith" />
                         </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                            <input required type="email" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-watt-primary focus:border-transparent outline-none" placeholder="john@company.com" />
+                            <input required type="email" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-watt-dark focus:border-transparent outline-none" placeholder="john@company.com" />
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                            <input required type="tel" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-watt-primary focus:border-transparent outline-none" placeholder="07123 456 789" />
+                            <input required type="tel" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-watt-dark focus:border-transparent outline-none" placeholder="07123 456 789" />
                         </div>
                     </div>
 
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Service Required</label>
-                        <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-watt-primary focus:border-transparent outline-none">
+                        <select className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-watt-dark focus:border-transparent outline-none">
                             <option>Electricity & Gas</option>
                             <option>Electricity Only</option>
                             <option>Gas Only</option>
@@ -102,7 +103,7 @@ export const Quote: React.FC = () => {
                     </div>
 
                     <div className="pt-4">
-                        <button type="submit" className="w-full bg-watt-primary hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-colors shadow-lg">
+                        <button type="submit" className="w-full bg-watt-dark hover:bg-black text-white font-bold py-3 rounded-lg transition-colors shadow-lg">
                             Compare Prices Now
                         </button>
                         <p className="text-xs text-gray-400 text-center mt-3">

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Icons } from '../components/Icons';
 import { ServiceCard } from '../components/ServiceCard';
-import { TrustWidget } from '../components/TrustWidget';
+import { Reviews } from '../components/Reviews';
 import { useMarketWatch } from '../hooks/useMarketWatch';
 
 interface HomeProps {
@@ -80,7 +80,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             <div className="absolute inset-0 bg-gradient-to-r from-watt-dark via-watt-dark/90 to-watt-dark/60"></div>
             
             {/* Clean ambient glow */}
-            <div className="absolute -top-[20%] -right-[10%] w-[800px] h-[800px] bg-blue-900/30 rounded-full blur-[120px]"></div>
+            <div className="absolute -top-[20%] -right-[10%] w-[800px] h-[800px] bg-gray-900/50 rounded-full blur-[120px]"></div>
             <div className="absolute -bottom-[20%] -left-[10%] w-[600px] h-[600px] bg-watt-accent/10 rounded-full blur-[100px]"></div>
         </div>
 
@@ -135,7 +135,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             {/* Hero Interaction Card - Glassmorphism */}
             <div className="lg:w-[450px] w-full animate-fade-in-up" style={{animationDelay: '0.2s'}}>
                 <div className="glass-panel p-8 rounded-3xl shadow-2xl relative overflow-hidden group hover:border-white/20 transition-colors">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-watt-accent to-blue-500"></div>
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-watt-accent to-watt-dark"></div>
                     
                     <div className="flex items-center justify-between mb-6">
                         <div>
@@ -216,7 +216,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                     <button 
                         onClick={handleStartQuote} 
                         disabled={isRedirecting}
-                        className="w-full mt-8 bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 group-hover:scale-[1.02] duration-200 disabled:opacity-80 disabled:cursor-wait"
+                        className="w-full mt-8 bg-watt-dark hover:bg-black text-white font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 group-hover:scale-[1.02] duration-200 disabled:opacity-80 disabled:cursor-wait border border-white/10"
                     >
                         {isRedirecting ? (
                             <>Processing...</>
@@ -251,12 +251,12 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
              <div className="flex w-[200%] animate-scroll hover:pause">
                  {/* Duplicate the list for seamless loop */}
                  {[...suppliers, ...suppliers].map((s, i) => (
-                     <div key={i} className="flex-shrink-0 w-[160px] md:w-[200px] flex items-center justify-center px-8">
+                     <div key={i} className="flex-shrink-0 w-[160px] flex items-center justify-center px-4">
                          {/* Using Clearbit Logo API for authentic branding */}
                          <img 
-                            src={`https://logo.clearbit.com/${s.domain}?size=120&greyscale=true`} 
+                            src={`https://logo.clearbit.com/${s.domain}?size=120`} 
                             alt={`${s.name} Business Energy`} 
-                            className="max-h-10 md:max-h-12 w-auto object-contain opacity-50 hover:opacity-100 hover:scale-110 hover:grayscale-0 transition-all duration-300 filter grayscale"
+                            className="h-12 w-auto object-contain transition-transform duration-300 hover:scale-110"
                             onError={(e) => {
                                 // Fallback if image fails
                                 (e.target as HTMLImageElement).style.display = 'none';
@@ -268,22 +268,104 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
              </div>
          </div>
       </section>
-
-      <TrustWidget />
       
+      {/* REVIEWS SECTION */}
+      <Reviews />
+
+      {/* PROCESS SECTION - REDESIGNED WITH IMAGE */}
+      <section className="py-24 bg-watt-light relative">
+          <div className="container mx-auto px-4">
+              <div className="flex flex-col lg:flex-row items-center gap-16">
+                  {/* Left: Image */}
+                  <div className="lg:w-1/2 reveal">
+                      <div className="relative">
+                          <div className="absolute -inset-4 bg-watt-accent rounded-[2rem] rotate-3 opacity-20"></div>
+                          <img 
+                            src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1000&q=80" 
+                            alt="Easy Switching Process" 
+                            className="relative rounded-[2rem] shadow-2xl border-4 border-white"
+                          />
+                          <div className="absolute -bottom-8 -right-8 bg-white p-6 rounded-2xl shadow-xl animate-bounce duration-[3000ms]">
+                               <div className="flex items-center gap-3">
+                                   <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                                       <Icons.CheckCircle size={24} />
+                                   </div>
+                                   <div>
+                                       <p className="font-bold text-gray-900">Switch Complete</p>
+                                       <p className="text-xs text-gray-500">Average time: 5 mins</p>
+                                   </div>
+                               </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  {/* Right: Process Steps */}
+                  <div className="lg:w-1/2 reveal">
+                      <h2 className="text-watt-accent font-bold uppercase tracking-widest text-sm mb-3">How It Works</h2>
+                      <h3 className="text-4xl font-black text-watt-dark mb-6">Streamlined Utility Procurement.</h3>
+                      <p className="text-gray-600 text-lg mb-10">We've stripped away the complexity. Our tech-enabled process is fast, secure, and transparent.</p>
+                      
+                      <div className="space-y-8">
+                          {/* Step 1 */}
+                          <div className="flex gap-6 group">
+                              <div className="flex-shrink-0 relative">
+                                  <div className="w-16 h-16 rounded-2xl bg-white border border-gray-200 flex items-center justify-center shadow-sm group-hover:border-watt-accent group-hover:bg-watt-accent group-hover:text-white transition-all duration-300">
+                                      <Icons.FileText size={28} />
+                                  </div>
+                                  <div className="absolute -top-2 -right-2 w-6 h-6 bg-watt-dark text-white rounded-full flex items-center justify-center text-xs font-bold border-2 border-white">1</div>
+                              </div>
+                              <div>
+                                  <h4 className="font-bold text-xl text-watt-dark mb-2">Provide Details</h4>
+                                  <p className="text-gray-500 leading-relaxed">Upload a recent bill or tell us about your usage. It takes less than 60 seconds.</p>
+                              </div>
+                          </div>
+
+                          {/* Step 2 */}
+                          <div className="flex gap-6 group">
+                              <div className="flex-shrink-0 relative">
+                                  <div className="w-16 h-16 rounded-2xl bg-white border border-gray-200 flex items-center justify-center shadow-sm group-hover:border-watt-accent group-hover:bg-watt-accent group-hover:text-white transition-all duration-300">
+                                      <Icons.Search size={28} />
+                                  </div>
+                                  <div className="absolute -top-2 -right-2 w-6 h-6 bg-watt-dark text-white rounded-full flex items-center justify-center text-xs font-bold border-2 border-white">2</div>
+                              </div>
+                              <div>
+                                  <h4 className="font-bold text-xl text-watt-dark mb-2">We Compare Market</h4>
+                                  <p className="text-gray-500 leading-relaxed">Our AI engine scans 20+ suppliers to find the best rates for your specific meter profile.</p>
+                              </div>
+                          </div>
+
+                          {/* Step 3 */}
+                          <div className="flex gap-6 group">
+                              <div className="flex-shrink-0 relative">
+                                  <div className="w-16 h-16 rounded-2xl bg-white border border-gray-200 flex items-center justify-center shadow-sm group-hover:border-watt-accent group-hover:bg-watt-accent group-hover:text-white transition-all duration-300">
+                                      <Icons.Plug size={28} />
+                                  </div>
+                                  <div className="absolute -top-2 -right-2 w-6 h-6 bg-watt-dark text-white rounded-full flex items-center justify-center text-xs font-bold border-2 border-white">3</div>
+                              </div>
+                              <div>
+                                  <h4 className="font-bold text-xl text-watt-dark mb-2">Seamless Switch</h4>
+                                  <p className="text-gray-500 leading-relaxed">We handle the paperwork and terminate your old contract. No interruption to supply.</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
       {/* SEO CONTENT SECTION - Boosts rankings for 'Cheapest Energy Supplier', 'British Gas', 'Eon', 'Opus' */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white border-b border-gray-200">
         <div className="container mx-auto px-4">
-           <div className="flex flex-col lg:flex-row gap-16 items-center">
-              {/* Left Column: SEO Text */}
+           <div className="flex flex-col lg:flex-row gap-16 items-start">
+              {/* Left Column: SEO Text + Image */}
               <div className="lg:w-1/2">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100/50 text-watt-primary text-xs font-bold uppercase tracking-wider mb-6">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 text-watt-dark text-xs font-bold uppercase tracking-wider mb-6">
                       <Icons.Search size={14} /> Market Analysis
                   </div>
                   <h2 className="text-4xl font-black text-watt-dark mb-6 leading-tight">
-                    Find the <span className="text-transparent bg-clip-text bg-gradient-to-r from-watt-primary to-blue-400">Cheapest Business Energy Supplier</span> in seconds.
+                    Find the <span className="text-transparent bg-clip-text bg-gradient-to-r from-watt-accent to-emerald-600">Cheapest Business Energy Supplier</span> in seconds.
                   </h2>
-                  <div className="prose prose-lg text-gray-600">
+                  <div className="prose prose-lg text-gray-600 mb-8">
                       <p className="mb-4 leading-relaxed">
                         As a leading <strong>Energy Broker</strong>, Watt Utilities simplifies the complex market. We don't just look at one provider; we compare the entire market to ensure you never overpay.
                       </p>
@@ -295,19 +377,13 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                       </p>
                   </div>
                   
-                  <div className="mt-8 flex flex-wrap items-center gap-4 text-sm font-bold text-gray-500">
-                       <div className="flex items-center gap-2">
-                           <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center text-green-600"><Icons.CheckCircle size={12} /></div>
-                           Live Rates
-                       </div>
-                       <div className="flex items-center gap-2">
-                           <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center text-green-600"><Icons.CheckCircle size={12} /></div>
-                           Instant Switch
-                       </div>
-                       <div className="flex items-center gap-2">
-                           <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center text-green-600"><Icons.CheckCircle size={12} /></div>
-                           Bill Validation
-                       </div>
+                  {/* Added Image per request for more visuals */}
+                  <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100 mt-8 group">
+                      <img 
+                        src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1000&q=80" 
+                        alt="Business Energy Analysis" 
+                        className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
                   </div>
               </div>
 
@@ -315,8 +391,8 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               <div className="lg:w-1/2">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {/* British Gas Card */}
-                      <div className="group bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-blue-200 transition-all duration-300">
-                          <div className="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <div className="group bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md hover:border-gray-300 transition-all duration-300">
+                          <div className="w-12 h-12 rounded-xl bg-gray-50 text-watt-dark flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                               <Icons.Flame size={24} />
                           </div>
                           <h3 className="text-lg font-bold text-gray-900 mb-2">British Gas</h3>
@@ -355,7 +431,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                           className="group bg-watt-dark p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col justify-center items-center text-center cursor-pointer relative overflow-hidden"
                       >
                           {/* Background Effect */}
-                          <div className="absolute inset-0 bg-gradient-to-br from-watt-dark to-blue-900 group-hover:scale-105 transition-transform duration-500"></div>
+                          <div className="absolute inset-0 bg-gradient-to-br from-watt-dark to-gray-900 group-hover:scale-105 transition-transform duration-500"></div>
                           
                           <div className="relative z-10">
                               <div className="w-12 h-12 rounded-full bg-white/10 text-white flex items-center justify-center mb-3 mx-auto group-hover:bg-watt-accent group-hover:text-watt-dark transition-colors">
@@ -371,92 +447,17 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* PROCESS SECTION */}
-      <section className="py-28 bg-watt-light relative">
-          <div className="container mx-auto px-4">
-              <div className="text-center max-w-3xl mx-auto mb-20 reveal">
-                  <h2 className="text-watt-accent font-bold uppercase tracking-widest text-sm mb-3">How It Works</h2>
-                  <h3 className="text-4xl font-black text-watt-dark mb-6">Streamlined Utility Procurement.</h3>
-                  <p className="text-gray-600 text-lg">We've stripped away the complexity. Our tech-enabled process is fast, secure, and transparent.</p>
-              </div>
-
-              <div className="relative z-10 max-w-6xl mx-auto reveal">
-                  {/* CSS Process Flow Component */}
-                  <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-                      {/* Connecting Line (Desktop) */}
-                      <div className="hidden md:block absolute top-12 left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-watt-accent/30 via-watt-primary/30 to-watt-accent/30 border-t-2 border-dashed border-gray-300 z-0"></div>
-
-                      {/* Step 1 */}
-                      <div className="relative z-10 flex flex-col items-center text-center group">
-                          <div className="w-24 h-24 bg-white rounded-full shadow-xl border-4 border-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 group-hover:border-watt-accent">
-                              <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center text-watt-primary">
-                                  <Icons.FileText size={32} />
-                              </div>
-                          </div>
-                          <div className="bg-white px-6 py-4 rounded-xl shadow-sm border border-gray-100 relative">
-                              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-watt-accent text-white rounded-full flex items-center justify-center text-xs font-bold border-2 border-white">1</div>
-                              <h4 className="font-bold text-watt-dark mb-1">You</h4>
-                              <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Provide Details</p>
-                          </div>
-                      </div>
-
-                      {/* Step 2 */}
-                      <div className="relative z-10 flex flex-col items-center text-center group">
-                          <div className="w-24 h-24 bg-white rounded-full shadow-xl border-4 border-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 group-hover:border-watt-accent">
-                              <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center text-watt-primary">
-                                  <Icons.Search size={32} />
-                              </div>
-                          </div>
-                          <div className="bg-white px-6 py-4 rounded-xl shadow-sm border border-gray-100 relative">
-                              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-watt-accent text-white rounded-full flex items-center justify-center text-xs font-bold border-2 border-white">2</div>
-                              <h4 className="font-bold text-watt-dark mb-1">Watt Utilities</h4>
-                              <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">We Compare</p>
-                          </div>
-                      </div>
-
-                      {/* Step 3 */}
-                      <div className="relative z-10 flex flex-col items-center text-center group">
-                          <div className="w-24 h-24 bg-white rounded-full shadow-xl border-4 border-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 group-hover:border-watt-accent">
-                              <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center text-watt-primary">
-                                  <Icons.CheckCircle size={32} />
-                              </div>
-                          </div>
-                          <div className="bg-white px-6 py-4 rounded-xl shadow-sm border border-gray-100 relative">
-                              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-watt-accent text-white rounded-full flex items-center justify-center text-xs font-bold border-2 border-white">3</div>
-                              <h4 className="font-bold text-watt-dark mb-1">Best Offers</h4>
-                              <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">You Choose</p>
-                          </div>
-                      </div>
-
-                      {/* Step 4 */}
-                      <div className="relative z-10 flex flex-col items-center text-center group">
-                          <div className="w-24 h-24 bg-white rounded-full shadow-xl border-4 border-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 group-hover:border-watt-accent">
-                              <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center text-watt-primary">
-                                  <Icons.Plug size={32} />
-                              </div>
-                          </div>
-                          <div className="bg-white px-6 py-4 rounded-xl shadow-sm border border-gray-100 relative">
-                              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-watt-accent text-white rounded-full flex items-center justify-center text-xs font-bold border-2 border-white">4</div>
-                              <h4 className="font-bold text-watt-dark mb-1">Switch & Save</h4>
-                              <p className="text-xs text-gray-500 font-medium uppercase tracking-wide">Hassle-Free Start</p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </section>
-
-      {/* SERVICES GRID */}
+      {/* SERVICES GRID - REVERTED TO ICON ONLY WITH DISTINCT COLORS */}
       <section className="py-28 bg-white">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-gray-100 pb-8 reveal">
             <div className="max-w-2xl">
-                <h2 className="text-4xl font-black text-watt-dark mb-4">Holistic Utility Management.</h2>
+                <h2 className="text-4xl font-black text-watt-dark mb-4">Complete Utility Management.</h2>
                 <p className="text-gray-600 text-lg">
                    We don't just find cheap rates. We provide end-to-end infrastructure support.
                 </p>
             </div>
-            <button onClick={() => onNavigate('services')} className="hidden md:flex items-center gap-2 text-watt-primary font-bold hover:text-watt-dark transition-colors">
+            <button onClick={() => onNavigate('services')} className="hidden md:flex items-center gap-2 text-watt-dark font-bold hover:text-watt-accent transition-colors">
                 View All Services <Icons.ArrowRight size={20}/>
             </button>
           </div>
@@ -464,50 +465,50 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div onClick={() => onNavigate('services/electricity')} className="cursor-pointer">
                 <ServiceCard 
-                title="Business Electricity"
-                description="Access wholesale rates from the Big Six and independent challengers."
-                icon={<Icons.Zap size={28} />}
-                color="bg-yellow-400"
+                    title="Business Electricity"
+                    description="Access wholesale rates from the Big Six and independent challengers."
+                    icon={<Icons.Zap size={28} />}
+                    color="bg-amber-500"
                 />
             </div>
             <div onClick={() => onNavigate('services/gas')} className="cursor-pointer">
                 <ServiceCard 
-                title="Business Gas"
-                description="Fixed and flexible procurement strategies to mitigate market volatility."
-                icon={<Icons.Flame size={28} />}
-                color="bg-orange-500"
+                    title="Business Gas"
+                    description="Fixed and flexible procurement strategies to mitigate market volatility."
+                    icon={<Icons.Flame size={28} />}
+                    color="bg-orange-500"
                 />
             </div>
             <div onClick={() => onNavigate('services/water')} className="cursor-pointer">
                 <ServiceCard 
-                title="Water Audit"
-                description="Reduce costs by up to 30% through leak detection and tariff optimization."
-                icon={<Icons.Droplets size={28} />}
-                color="bg-blue-500"
+                    title="Water Audit"
+                    description="Reduce costs by up to 30% through leak detection and tariff optimization."
+                    icon={<Icons.Droplets size={28} />}
+                    color="bg-cyan-500"
                 />
             </div>
             <div onClick={() => onNavigate('services/green-energy')} className="cursor-pointer">
                 <ServiceCard 
-                title="Green Energy"
-                description="100% renewable sources to help your business hit Net Zero targets."
-                icon={<Icons.Leaf size={28} />}
-                color="bg-green-600"
+                    title="Green Energy"
+                    description="100% renewable sources to help your business hit Net Zero targets."
+                    icon={<Icons.Leaf size={28} />}
+                    color="bg-emerald-500"
                 />
             </div>
             <div onClick={() => onNavigate('services/telecoms')} className="cursor-pointer">
                 <ServiceCard 
-                title="Telecoms & VoIP"
-                description="High-speed broadband and unified comms for the modern workplace."
-                icon={<Icons.Wifi size={28} />}
-                color="bg-purple-500"
+                    title="Telecoms & VoIP"
+                    description="High-speed broadband and unified comms for the modern workplace."
+                    icon={<Icons.Wifi size={28} />}
+                    color="bg-violet-500"
                 />
             </div>
             <div onClick={() => onNavigate('services/connections')} className="cursor-pointer">
                 <ServiceCard 
-                title="New Connections"
-                description="Full project management for new meter installs and site works."
-                icon={<Icons.Plug size={28} />}
-                color="bg-red-500"
+                    title="New Connections"
+                    description="Full project management for new meter installs and site works."
+                    icon={<Icons.Plug size={28} />}
+                    color="bg-rose-500"
                 />
             </div>
           </div>
@@ -570,7 +571,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                           
                           {/* Floating Stat */}
                           <div className="absolute -bottom-6 -left-6 bg-white text-watt-dark p-6 rounded-xl shadow-xl hidden md:block">
-                              <div className="text-4xl font-black text-watt-primary mb-1">£12m+</div>
+                              <div className="text-4xl font-black text-watt-dark mb-1">£12m+</div>
                               <div className="text-xs font-bold uppercase tracking-wider text-gray-500">Client Savings Secured</div>
                           </div>
                       </div>
@@ -585,7 +586,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             <div className="relative bg-watt-dark rounded-[3rem] overflow-hidden shadow-2xl">
                 {/* Background Glows */}
                 <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-watt-accent/20 rounded-full blur-[120px]"></div>
-                <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-blue-600/30 rounded-full blur-[100px]"></div>
+                <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gray-600/30 rounded-full blur-[100px]"></div>
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
                 
                 <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-12 lg:p-20 gap-12">
@@ -598,7 +599,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                             Ready to cut your <br/>
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-watt-accent to-white">Business Costs?</span>
                         </h2>
-                        <p className="text-lg text-blue-100 max-w-xl leading-relaxed mb-8">
+                        <p className="text-lg text-gray-300 max-w-xl leading-relaxed mb-8">
                             Upload your bill today and receive a free, no-obligation comparison within 24 hours. Our experts handle the switch from start to finish.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">

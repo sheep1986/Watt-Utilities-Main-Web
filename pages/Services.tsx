@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Icons } from '../components/Icons';
 import { ServiceCard } from '../components/ServiceCard';
@@ -18,6 +19,8 @@ interface ServiceDetail {
     icon: React.ElementType;
     color: string;
     colorHex: string;
+    colorClass: string;
+    bgClass: string;
 }
 
 export const Services: React.FC<ServicesProps> = ({ onNavigate, subPage }) => {
@@ -26,12 +29,12 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate, subPage }) => {
     window.scrollTo(0, 0);
   }, [subPage]);
 
+  // Distinct colors for each service
   const serviceData: Record<string, ServiceDetail> = {
     'electricity': {
         id: 'electricity',
         title: 'Business Electricity',
         subtitle: 'Powering your business for less.',
-        // High quality High-Voltage conceptual image
         heroImage: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=2000&q=80',
         description: 'We procure electricity contracts for businesses of all sizes. Whether you need a simple fixed-rate plan to protect against price hikes or a flexible pass-through contract for large half-hourly meters, we have the expertise.',
         longDescription: [
@@ -40,15 +43,17 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate, subPage }) => {
         ],
         benefits: ['Fixed Term Contracts (1-5 Years)', 'Green/Renewable Options', 'Half-Hourly (HH) Metering', 'Multi-site consolidation', 'KVA Capacity Analysis'],
         icon: Icons.Zap,
-        color: 'text-yellow-500',
-        colorHex: '#eab308'
+        color: 'text-amber-600',
+        colorHex: '#d97706',
+        colorClass: 'text-amber-600',
+        bgClass: 'bg-amber-600'
     },
     'gas': {
         id: 'gas',
         title: 'Business Gas',
         subtitle: 'Strategic procurement for a volatile market.',
-        // Blue Flame Close up
-        heroImage: 'https://images.unsplash.com/photo-1617791160505-6f00504e3519?auto=format&fit=crop&w=2000&q=80', 
+        // Updated to a verified blue gas flame image
+        heroImage: 'https://images.unsplash.com/photo-1594498653385-d517557d9d95?auto=format&fit=crop&w=2000&q=80', 
         description: 'Gas markets are volatile. We monitor wholesale trends daily to advise you on the optimal time to purchase. We handle new connections and upgrades to supply capacity for industrial usage.',
         longDescription: [
              "Commercial gas prices are heavily influenced by global events and storage levels. Our analysts track the wholesale therm price daily, alerting you when the market dips so you can lock in a low rate.",
@@ -56,14 +61,15 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate, subPage }) => {
         ],
         benefits: ['Price locking strategies', 'Automated Bill Validation', 'New Meter Installation', 'AMR (Smart) Metering', 'Gas Siteworks Management'],
         icon: Icons.Flame,
-        color: 'text-orange-500',
-        colorHex: '#f97316'
+        color: 'text-orange-600',
+        colorHex: '#ea580c',
+        colorClass: 'text-orange-600',
+        bgClass: 'bg-orange-600'
     },
     'water': {
         id: 'water',
         title: 'Water Services',
         subtitle: 'Liquid assets managed efficiently.',
-        // Clear Blue Water Splash
         heroImage: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=2000&q=80',
         description: 'Water deregulation allows you to switch your retailer. We conduct comprehensive audits to identify leaks, overcharges, and opportunities to switch to cheaper tariffs.',
         longDescription: [
@@ -72,8 +78,10 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate, subPage }) => {
         ],
         benefits: ['Leak detection & repair', 'Bill auditing (historic recovery)', 'Surface water drainage claims', 'Consolidated billing', 'Trade Effluent Consents'],
         icon: Icons.Droplets,
-        color: 'text-blue-500',
-        colorHex: '#3b82f6'
+        color: 'text-cyan-600',
+        colorHex: '#0891b2',
+        colorClass: 'text-cyan-600',
+        bgClass: 'bg-cyan-600'
     },
     'multisite': {
         id: 'multisite',
@@ -88,13 +96,14 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate, subPage }) => {
         benefits: ['Consolidated Billing', 'Coterminous Contracts', 'Group Purchasing Power', 'Dedicated Key Account Manager', 'Portfolio Analysis'],
         icon: Icons.Building2,
         color: 'text-indigo-600',
-        colorHex: '#4f46e5'
+        colorHex: '#4f46e5',
+        colorClass: 'text-indigo-600',
+        bgClass: 'bg-indigo-600'
     },
     'telecoms': {
         id: 'telecoms',
-        title: 'Business Telecoms',
+        title: 'Telecoms & VoIP',
         subtitle: 'High-speed connectivity for the modern office.',
-        // Abstract Network/Cyber Connectivity
         heroImage: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=2000&q=80',
         description: 'Connectivity is the backbone of modern business. We source high-speed broadband, VoIP systems, and mobile fleets to keep your team connected.',
         longDescription: [
@@ -103,14 +112,15 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate, subPage }) => {
         ],
         benefits: ['Leased Lines (1Gbps+)', 'VoIP & Cloud PBX', 'Business Mobile SIMs', '5G Solutions', 'PSTN Switch-off preparation'],
         icon: Icons.Wifi,
-        color: 'text-purple-500',
-        colorHex: '#a855f7'
+        color: 'text-violet-600',
+        colorHex: '#7c3aed',
+        colorClass: 'text-violet-600',
+        bgClass: 'bg-violet-600'
     },
     'green-energy': {
         id: 'green-energy',
         title: 'Green Energy',
         subtitle: 'Sustainable power for a net-zero future.',
-        // Solar Panels / Wind Farm Mix
         heroImage: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=2000&q=80', 
         description: 'Reduce your carbon footprint with 100% renewable electricity and green gas. We help you achieve your sustainability goals without breaking the bank.',
         longDescription: [
@@ -119,15 +129,16 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate, subPage }) => {
         ],
         benefits: ['100% Renewable Electricity', 'Green Gas', 'Carbon Offsetting', 'Corporate PPA (Power Purchase Agreements)', 'EV Charging Points'],
         icon: Icons.Leaf,
-        color: 'text-green-600',
-        colorHex: '#16a34a'
+        color: 'text-emerald-600',
+        colorHex: '#059669',
+        colorClass: 'text-emerald-600',
+        bgClass: 'bg-emerald-600'
     },
     'connections': {
         id: 'connections',
         title: 'New Connections',
         subtitle: 'Getting you connected, faster.',
-        // Infrastructure / Construction
-        heroImage: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=2000&q=80', 
+        heroImage: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=2000&q=80', 
         description: 'Full project management for new meter installs and site works. From MPAN creation to final meter fit, we manage the complex logistics.',
         longDescription: [
             "Setting up utilities for a new build or commercial development can be a bureaucratic nightmare. Dealing with Distribution Network Operators (DNOs) requires patience and technical knowledge.",
@@ -135,8 +146,10 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate, subPage }) => {
         ],
         benefits: ['MPAN/MPRN Generation', 'Meter Installation', 'Upgrades & Downgrades', 'Temporary Builders Supplies', 'Disconnections'],
         icon: Icons.Plug,
-        color: 'text-red-500',
-        colorHex: '#ef4444'
+        color: 'text-rose-600',
+        colorHex: '#e11d48',
+        colorClass: 'text-rose-600',
+        bgClass: 'bg-rose-600'
     }
   };
 
@@ -153,7 +166,7 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate, subPage }) => {
                 </div>
                 <div className="container mx-auto px-4 relative z-10 text-center">
                     <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold uppercase tracking-widest mb-6`}>
-                        <service.icon size={18} className={service.color} />
+                        <service.icon size={18} className={service.colorClass.replace('text-', 'text-')} />
                         {service.title}
                     </div>
                     <h1 className="text-5xl lg:text-7xl font-black text-white mb-6">{service.title}</h1>
@@ -166,18 +179,18 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate, subPage }) => {
                 <div className="flex flex-col lg:flex-row gap-16">
                     {/* Left: Main Content */}
                     <div className="lg:w-2/3">
-                        <h2 className="text-3xl font-bold text-watt-blue mb-8">Overview</h2>
+                        <h2 className="text-3xl font-bold text-watt-dark mb-8">Overview</h2>
                         <div className="prose prose-lg text-gray-600 mb-12">
                             {service.longDescription.map((para, idx) => (
                                 <p key={idx} className="mb-6 leading-relaxed">{para}</p>
                             ))}
                         </div>
 
-                        <h3 className="text-2xl font-bold text-watt-blue mb-6">Key Benefits</h3>
+                        <h3 className="text-2xl font-bold text-watt-dark mb-6">Key Benefits</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
                             {service.benefits.map((benefit, idx) => (
-                                <div key={idx} className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100 hover:border-watt-accent/50 transition-colors">
-                                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm text-watt-accent shrink-0">
+                                <div key={idx} className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-100 hover:border-gray-200 transition-colors">
+                                    <div className={`w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm ${service.colorClass} shrink-0`}>
                                         <Icons.CheckCircle size={20} />
                                     </div>
                                     <span className="font-semibold text-gray-800">{benefit}</span>
@@ -211,22 +224,22 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate, subPage }) => {
                                         className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 text-left group transition-colors"
                                     >
                                         <div className="flex items-center gap-3">
-                                            <s.icon size={18} className="text-gray-400 group-hover:text-watt-primary" />
+                                            <s.icon size={18} className={`text-gray-400 group-hover:${s.colorClass} transition-colors`} />
                                             <span className="text-gray-600 group-hover:text-gray-900 font-medium">{s.title}</span>
                                         </div>
-                                        <Icons.ChevronRight size={16} className="text-gray-300 group-hover:text-watt-accent" />
+                                        <Icons.ChevronRight size={16} className={`text-gray-300 group-hover:${s.colorClass} transition-colors`} />
                                     </button>
                                 ))}
                             </div>
                         </div>
                         
-                        <div className="bg-blue-50 p-8 rounded-2xl border border-blue-100">
+                        <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100">
                             <div className="flex items-center gap-3 mb-4">
-                                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-watt-primary shadow-sm">
+                                <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-watt-dark shadow-sm">
                                     <Icons.PhoneCall size={24} />
                                 </div>
                                 <div>
-                                    <p className="text-xs font-bold text-blue-800 uppercase">Need Help?</p>
+                                    <p className="text-xs font-bold text-gray-500 uppercase">Need Help?</p>
                                     <p className="text-lg font-bold text-gray-900">0161 123 4567</p>
                                 </div>
                             </div>
@@ -239,13 +252,13 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate, subPage }) => {
     );
   }
 
-  // DEFAULT OVERVIEW PAGE (If no subPage or invalid subPage)
+  // DEFAULT OVERVIEW PAGE
   return (
     <div className="bg-white min-h-screen pt-10 pb-20">
-      <div className="bg-watt-blue text-white py-24 mb-16 relative overflow-hidden">
+      <div className="bg-watt-dark text-white py-24 mb-16 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
              <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=80" alt="Corporate Office" className="w-full h-full object-cover opacity-20" />
-             <div className="absolute inset-0 bg-watt-blue/80"></div>
+             <div className="absolute inset-0 bg-watt-dark/80"></div>
         </div>
         <div className="container mx-auto px-4 text-center relative z-10">
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6">Our Services</h1>
@@ -255,6 +268,34 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate, subPage }) => {
         </div>
       </div>
 
+      {/* WHY SWITCH SECTION WITH IMAGE */}
+      <section className="py-12 bg-gray-50 mb-16">
+        <div className="container mx-auto px-4">
+            <div className="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row">
+                <div className="md:w-1/2 relative min-h-[400px]">
+                    <img 
+                        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80" 
+                        alt="Data Analysis" 
+                        className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gray-900/20"></div>
+                </div>
+                <div className="md:w-1/2 p-12 flex flex-col justify-center">
+                    <div className="inline-flex items-center gap-2 text-watt-dark font-bold uppercase tracking-widest mb-4">
+                        <Icons.BarChart3 size={18} /> Data Driven
+                    </div>
+                    <h3 className="text-3xl font-black text-watt-dark mb-6">Stop guessing. Start saving.</h3>
+                    <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+                        Most businesses overpay for energy simply because they auto-renew. Our smart comparison engine analyzes your usage against thousands of tariffs to find the perfect match.
+                    </p>
+                    <button onClick={() => onNavigate('contact')} className="self-start px-8 py-3 bg-watt-dark text-white rounded-xl font-bold hover:bg-watt-accent transition-colors">
+                        Analyze My Bills
+                    </button>
+                </div>
+            </div>
+        </div>
+      </section>
+
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Object.values(serviceData).map((service) => (
@@ -263,7 +304,8 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate, subPage }) => {
                         title={service.title}
                         description={service.description}
                         icon={<service.icon size={28} />}
-                        color={`bg-${service.colorHex === '#eab308' ? 'yellow-500' : service.color.split('-')[1] + '-' + service.color.split('-')[2]}`} // Simplified color mapping for Card
+                        color={service.bgClass} 
+                        image={service.heroImage.replace('w=2000', 'w=800')}
                     />
                 </div>
             ))}

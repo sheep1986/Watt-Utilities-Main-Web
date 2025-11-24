@@ -49,10 +49,10 @@
             },
             colors: {
               watt: {
-                dark: '#0B1221', // Deepest Navy (Footer/Hero)
+                dark: '#0B1221', // Deepest Navy (Footer/Hero) - Logo Color
                 blue: '#111827', // Corporate Dark
-                primary: '#2563eb', // Action Blue
-                accent: '#8cc63f', // Updated Brand Green to match Logo
+                primary: '#0B1221', // Changed from Bright Blue to Brand Navy to align with logo
+                accent: '#8cc63f', // Brand Green - Logo Color
                 accentHover: '#7ab32e',
                 light: '#f8fafc',
                 surface: '#ffffff',
@@ -61,7 +61,7 @@
             animation: {
               'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
               'page-enter': 'pageEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-              'scroll': 'scroll 40s linear infinite',
+              'scroll': 'scroll 20s linear infinite',
             },
             keyframes: {
               fadeInUp: {
@@ -130,13 +130,13 @@
 <script type="importmap">
 {
   "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
     "vite": "https://aistudiocdn.com/vite@^7.2.4",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
   }
 }
 </script>
