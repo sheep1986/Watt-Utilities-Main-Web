@@ -129,3 +129,4 @@ export const Reviews: React.FC = () => {
       </div>
     </section>
   );
+};
