@@ -52,8 +52,7 @@ export const Services: React.FC<ServicesProps> = ({ onNavigate, subPage }) => {
         id: 'gas',
         title: 'Business Gas',
         subtitle: 'Strategic procurement for a volatile market.',
-        // Updated to a verified blue gas flame image
-        heroImage: 'https://images.unsplash.com/photo-1594498653385-d517557d9d95?auto=format&fit=crop&w=2000&q=80', 
+        heroImage: 'https://i.ibb.co/NHntb7s/gas-1.png', 
         description: 'Gas markets are volatile. We monitor wholesale trends daily to advise you on the optimal time to purchase. We handle new connections and upgrades to supply capacity for industrial usage.',
         longDescription: [
              "Commercial gas prices are heavily influenced by global events and storage levels. Our analysts track the wholesale therm price daily, alerting you when the market dips so you can lock in a low rate.",
